@@ -2,63 +2,45 @@
 
 @section("content")
     <div class="sub-title">
-        <h2>My Blog</h2>
+        <h2>Мой блог</h2>
         <a href="/contact"><i class="icon-envelope"></i></a>
     </div>
 
 
     <!-- Subscribe Form Start -->
     <div class="col-md-8 col-md-offset-2">
-        <form id="mc-form" method="post" action="">
-
+        <form id="form" method="post" action={{ route("tags") }}>
+            @csrf
             <div class="subscribe-form margin-top-20">
-                <input id="mc-email" placeholder="Тег" class="text-input">
+                <input name="tags" id="tags" placeholder="Тег" class="text-input">
                 <button class="submit-btn" type="submit">Поиск</button>
             </div>
-            <label for="mc-email" class="mc-label"></label>
+            <label for="tags" class="label"></label>
         </form>
 
     </div>
     <!-- Subscribe Form End -->
 
     <div class="col-md-12 content-page">
-        <!-- Blog Post Start -->
-        <div class="col-md-12 blog-post">
-            <div class="post-image">
-                <img src="images/blog/1.jpg" alt="">
+        @foreach($articles as $article)
+            <div class="col-md-12 blog-post">
+                <div class="post-image">
+                    <img alt="img" src={{ asset("storage/{$article->img_path}") }}>
+                </div>
+                <div class="post-title">
+                    <a href={{"/{$article->id}"}}><h1>{{ $article->title }}</h1></a>
+                </div>
+                <div class="post-tags">
+                    <h5>
+                        Тэги
+                        @foreach($article->tags as $tag)
+                            {{ $tag->name }}
+                        @endforeach
+                    </h5>
+                </div>
             </div>
-            <div class="post-title">
-                <a href="/single"><h1>Make mailchimp singup form working with ajax using jquery
-                        plugin</h1></a>
-            </div>
-        </div>
-        <!-- Blog Post End -->
-
-        <!-- Blog Post Start -->
-        <div class="col-md-12 blog-post">
-            <div class="post-image">
-                <img src="images/blog/1.jpg" alt="">
-            </div>
-            <div class="post-title">
-                <a href="/single"><h1>Make mailchimp singup form working with ajax using jquery
-                        plugin</h1></a>
-            </div>
-        </div>
-        <!-- Blog Post End -->
-
-        <!-- Blog Post Start -->
-        <div class="col-md-12 blog-post">
-            <div class="post-image">
-                <img src="images/blog/1.jpg" alt="">
-            </div>
-            <div class="post-title">
-                <a href="/single"><h1>Make mailchimp singup form working with ajax using jquery
-                        plugin</h1></a>
-            </div>
-        </div>
-        <!-- Blog Post End -->
-
-
+        @endforeach
+        {{ $articles->links() }}
     </div>
 @endsection()
 

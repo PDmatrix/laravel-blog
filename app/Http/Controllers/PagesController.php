@@ -8,7 +8,8 @@ use App\Article;
 class PagesController extends Controller
 {
     public function index() {
-        return view("index");
+        $articles = Article::paginate(5);
+        return view("index", compact("articles"));
     }
 
     public function about() {
@@ -19,8 +20,18 @@ class PagesController extends Controller
         return view("contact");
     }
 
-    public function single() {
-        return view("single");
+    public function single(Request $request, $id) {
+        $article = Article::find($id);
+        return view("single", compact("article"));
+    }
+
+    public function tags(Request $request) {
+        $tags = $request->input("tags");
+        $articles = Article::whereHas("tags", function($query) use ($tags) {
+            $query->where('name', '=', $tags);
+        })->paginate();
+       // $articles = \App\Tag::where("name", "=", $tags)->get()[0]->articles->paginate(5);
+        return view("index", compact("articles"));
     }
 
     public function work() {

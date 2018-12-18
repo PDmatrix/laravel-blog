@@ -12,8 +12,16 @@
 */
 
 Route::get("/", "PagesController@index");
+Route::post("/tags", "PagesController@tags")->name("tags");
 Route::get("/about", "PagesController@about");
 Route::get("/contact", "PagesController@contact");
-Route::get("/single", "PagesController@single");
+Route::get("/{id}", "PagesController@single");
 Route::get("/work", "PagesController@work");
 Route::get("/test", "PagesController@test");
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/secret', 'HomeController@secret')->name('secret');
+
+Route::get('/admin', 'AdminController@index');
+Route::post('/admin', 'AdminController@create')->name('create_article');

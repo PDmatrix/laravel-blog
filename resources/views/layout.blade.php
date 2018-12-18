@@ -61,9 +61,9 @@
                                     class="icon-menu menu"></i></a>
                         <div id="menu" class="collapse">
                             <ul class="menu-link">
-                                <li><a href="/about">About</a></li>
-                                <li><a href="/work">Work</a></li>
-                                <li><a href="/contact">Contact</a></li>
+                                <li><a href="/about">Обо мне</a></li>
+                                <li><a href="/work">Работа</a></li>
+                                <li><a href="/contact">Контакты</a></li>
                             </ul>
                         </div>
                     </div>
@@ -72,8 +72,8 @@
                     <div class="my-detail">
 
                         <div class="white-spacing">
-                            <h1>Alex Parker</h1>
-                            <span>Web Developer</span>
+                            <h1>Алекс Паркер</h1>
+                            <span>Вэб разработчик</span>
                         </div>
 
                         <ul class="social-icon">
@@ -99,9 +99,9 @@
 
                             <div class="subscribe-form margin-top-20">
                                 <input id="mc-email" type="email" placeholder="Email Address" class="text-input">
-                                <button class="submit-btn" type="submit">Submit</button>
+                                <button class="submit-btn" type="submit">Отправить</button>
                             </div>
-                            <p>Subscribe to my weekly newsletter</p>
+                            <p>Подпишись на мою еженедельную рассылку</p>
                             <label for="mc-email" class="mc-label"></label>
                         </form>
 
@@ -116,10 +116,10 @@
                 <div class="col-md-12 page-body margin-top-50 footer">
                     <footer>
                         <ul class="menu-link">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/about">About</a></li>
-                            <li><a href="/work">Work</a></li>
-                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="/about">Обо мне</a></li>
+                            <li><a href="/work">Работа</a></li>
+                            <li><a href="/contact">Контакты</a></li>
                         </ul>
                         <p>© Copyright 2016 DevBlog. All rights reserved</p>
                         <!-- UiPasta Credit Start -->

@@ -1,12 +1,5 @@
 ﻿@extends("layout")
 
-@section("custom-head-scripts")
-    <!-- Syntax Highlighter  -->
-    <link rel="stylesheet" type="text/css" href="css/syntax/shCore.css">
-    <link rel="stylesheet" type="text/css" href="css/syntax/shThemeDefault.css">
-@endsection()
-
-
 @section("content")
     <div class="sub-title">
         <a href="/" title="Go to Home Page"><h2>Back Home</h2></a>
@@ -16,9 +9,11 @@
 
     <div class="col-md-12 content-page">
         <div class="col-md-12 blog-post">
+            <p>
+                {{ $article->content }}
+            </p>
 
-
-            <!-- Post Headline Start -->
+            {{--<!-- Post Headline Start -->
             <div class="post-title">
                 <h1>How to make your company website based on bootstrap framework on localhost?</h1>
             </div>
@@ -107,9 +102,9 @@
                                       }, 1000);
                                       e.preventDefault();
                                      });
-				 
+
                                    /* Scroll To Top */
-		
+
                                    $(window).scroll(function(){
                                      if ($(this).scrollTop() >= 500) {
                                      $('.scroll-to-top').fadeIn();
@@ -117,7 +112,7 @@
                                      $('.scroll-to-top').fadeOut();
                                      }
                                      });
-	
+
 	                               $('.scroll-to-top').click(function(){
                                    $('html, body').animate({scrollTop : 0},800);
                                    return false;
@@ -221,7 +216,7 @@
                     <li>Speed Optimization</li>
                 </ul>
             </div>
-            <!-- Post List Style End -->
+            <!-- Post List Style End -->--}}
 
 
             <!-- Post Author Bio Box Start -->
@@ -243,7 +238,7 @@
             <!-- Post Author Bio Box End -->
 
 
-            <!-- You May Also Like Start -->
+            {{--<!-- You May Also Like Start -->
             <div class="you-may-also-like margin-top-50 margin-bottom-50">
                 <h3>You may also like</h3>
                 <div class="row">
@@ -265,7 +260,7 @@
 
                 </div>
             </div>
-            <!-- You May Also Like End -->
+            <!-- You May Also Like End -->--}}
 
 
             <!-- Post Comment (Disqus) Start -->
@@ -300,39 +295,7 @@
             </div>
             <!-- Post Comment (Disqus) End -->
 
-
         </div>
     </div>
 
-@endsection()
-
-
-@section("custom-popup")
-    <!-- Endpage Box (Popup When Scroll Down) Start -->
-    <div id="scroll-down-popup" class="endpage-box">
-        <h4>Read Also</h4>
-        <a href="#">How to make your company website based on bootstrap framework...</a>
-    </div>
-    <!-- Endpage Box (Popup When Scroll Down) End -->
-@endsection()
-
-@section("custom-footer-scripts")
-    <!-- Syntax Highlighter Javascript File  -->
-    <script type="text/javascript" src="js/syntax/shCore.js"></script>
-    <script type="text/javascript" src="js/syntax/shBrushCss.js"></script>
-    <script type="text/javascript" src="js/syntax/shBrushJScript.js"></script>
-    <script type="text/javascript" src="js/syntax/shBrushPerl.js"></script>
-    <script type="text/javascript" src="js/syntax/shBrushPhp.js"></script>
-    <script type="text/javascript" src="js/syntax/shBrushPlain.js"></script>
-    <script type="text/javascript" src="js/syntax/shBrushPython.js"></script>
-    <script type="text/javascript" src="js/syntax/shBrushRuby.js"></script>
-    <script type="text/javascript" src="js/syntax/shBrushSql.js"></script>
-    <script type="text/javascript" src="js/syntax/shBrushVb.js"></script>
-    <script type="text/javascript" src="js/syntax/shBrushXml.js"></script>
-
-    <!-- Syntax Highlighter Call Function -->
-    <script type="text/javascript">
-        SyntaxHighlighter.config.clipboardSwf = 'js/syntax/clipboard.swf';
-        SyntaxHighlighter.all();
-    </script>
 @endsection()
