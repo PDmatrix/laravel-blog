@@ -10,7 +10,7 @@
                         Запись успешно добавлена!
                     </div>
                 @endif
-                <form method="post" action="{{ route('create_article') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('ad_create_post') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="name">Заголовок</label>

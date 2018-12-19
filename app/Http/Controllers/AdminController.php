@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -25,8 +26,54 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $request->user()->authorizeRoles(['admin']);
-        $tags = \App\Tag::all();
-        return view('article_create', compact("tags"));
+        $articles = Article::all();
+
+        return view("admin", compact("articles"));
+
+        /*$tags = \App\Tag::all();
+        return view('article_create', compact("tags"));*/
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request, $id)
+    {
+        $request->user()->authorizeRoles(['admin']);
+
+        $article = Article::find($id);
+        //return $article;
+        return view('article_edit', compact("article"));
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function pedit(Request $request)
+    {
+        $request->user()->authorizeRoles(['admin']);
+
+        $this->validate($request, [
+            'id' => 'required',
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        $article = Article::find($request["id"]);
+        $article->title = $request["title"];
+        $article->content = $request["content"];
+        $article->save();
+
+        $articles = Article::all();
+        return view("admin", compact("articles"));
     }
 
     /**
@@ -37,6 +84,40 @@ class AdminController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function create(Request $request)
+    {
+        $request->user()->authorizeRoles(['admin']);
+
+        return view('article_create');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\Response
+     * @throws \Exception
+     */
+    public function delete(Request $request, $id)
+    {
+        $request->user()->authorizeRoles(['admin']);
+
+        $article = Article::find($id);
+        $article->delete();
+
+        $articles = Article::all();
+
+        return view("admin", compact("articles"));
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function pcreate(Request $request)
     {
         $request->user()->authorizeRoles(['admin']);
 
@@ -59,8 +140,7 @@ class AdminController extends Controller
         $article->save();
         $article->tags()->attach($dbtags);
         $request->photo->storeAs('public', $request->photo->getClientOriginalName());
-        $success = true;
-        return view('article_create', compact("success"));
+        return view('admin');
     }
 
 

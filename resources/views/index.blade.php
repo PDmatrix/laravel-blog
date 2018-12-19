@@ -28,7 +28,7 @@
                     <img alt="img" src={{ asset("storage/{$article->img_path}") }}>
                 </div>
                 <div class="post-title">
-                    <a href={{"/{$article->id}"}}><h1>{{ $article->title }}</h1></a>
+                    <a href={{"/single/{$article->id}"}}><h1>{{ $article->title }}</h1></a>
                 </div>
                 <div class="post-tags">
                     <h5>
